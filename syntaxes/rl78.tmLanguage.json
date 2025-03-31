@@ -1,0 +1,210 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "RL78",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#labels"
+    },
+    {
+      "include": "#instructions"
+    },
+    {
+      "include": "#registers"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#comments"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\$(INCLUDE|BINCLUDE|MIRROR|NOWARNING|WARNING|IFDEF|IFNDEF|IF|IFN|ELSEIF|ELSEIFN|ELSE|ENDIF)\\b",
+          "name": "keyword.control.rl78"
+        }
+      ]
+    },
+    "labels": {
+      "patterns": [
+        {
+          "comment": "label",
+          "match": "^\\s*(\\.?)([a-zA-Z_][a-zA-Z0-9_\\.\\$@]*)(\\:)",
+          "captures": {
+            "1": {
+              "name": "constant.language.symbol.rl78"
+            },
+            "2": {
+              "name": "constant.language.symbol.rl78"
+            },
+            "3": {
+              "name": "punctuation.separator.colon.rl78"
+            }
+          }
+        }
+      ]
+    },
+    "instructions": {
+      "patterns": [
+        {
+          "comment": "8-bit data transfer instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(mov|xch|oneb|clrb|movs|MOV|XCH|ONEB|CLRB|MOVS)\\s"
+        },
+        {
+          "comment": "16-bit data transfer instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(movw|xchw|onw|clrw|MOVW|XCHW|ONW|CLRW)\\s"
+        },
+        {
+          "comment": "8-bit operation instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(add|addc|sub|subc|and|or|xor|cmp|cmp0|cmps|ADD|ADDC|SUB|SUBC|AND|OR|XOR|CMP|CMP0|CMPS)\\s"
+        },
+        {
+          "comment": "16-bit operation instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(addw|subw|cmpw|ADDW|SUBW|CMPW)\\s"
+        },
+        {
+          "comment": "multiply/divite/multiply & accumulate instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(mulu|mulhu|mulh|divhu|divwu|machu|mach|MULU|MULHU|MULH|DIVHU|DIVWU|MACHU|MACH)\\s"
+        },
+        {
+          "comment": "increment/decrement instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(inc|dec|incw|decw|INC|DEC|INCW|DECW)\\s"
+        },
+        {
+          "comment": "shift instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(shr|shrw|shl|shlw|sar|sarw|SHR|SHRW|SHL|SHLW|SAR|SARW)\\s"
+        },
+        {
+          "comment": "rotate instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(ror|rol|rorc|rolc|rolwc|ROR|ROL|RORC|ROLC|ROLWC)\\s"
+        },
+        {
+          "comment": "bit manipulation instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(mov1|and1|or1|xor1|set1|clr1|not1|MOV1|AND1|OR1|XOR1|SET1|CLR1|NOT1)\\s"
+        },
+        {
+          "comment": "call return instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(call|callt|brk|ret|reti|retb|CALL|CALLT|BRK|RET|RETI|RETB)\\s"
+        },
+        {
+          "comment": "stack manipulation instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(push|pop|PUSH|POP)\\s"
+        },
+        {
+          "comment": "branch instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(br|bc|bnc|bz|bnz|bh|bnh|bt|bf|btclr|BR|BC|BNC|BZ|BNZ|BH|BNH|BT|BF|BTCLR)\\s"
+        },
+        {
+          "comment": "conditional skip instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(skc|sknc|skz|sknz|skh|sknh|SKC|SKNC|SKZ|SKNZ|SKH|SKNH)\\s"
+        },
+        {
+          "comment": "CPU control instructions",
+          "name": "support.function.rl78",
+          "match": "^\\s*(sel|nop|ei|di|halt|stop|SEL|NOP|EI|DI|HALT|STOP)\\s"
+        }
+      ]
+    },
+    "registers": {
+      "patterns": [
+        {
+          "name": "variable.other.register.pc.rl78",
+          "match": "\\b(pc|PC)\\b"
+        },
+        {
+          "name": "variable.other.register.psw.rl78",
+          "match": "\\b(psw|ie|z|ac|isp0|isp1|cy|PSW|IE|Z|AC|ISP0|ISP1|CY)\\b"
+        },
+        {
+          "name": "variable.other.register.sp.rl78",
+          "match": "\\b(sp|SP)\\b"
+        },
+        {
+          "name": "variable.other.register.8bit.rl78",
+          "match": "\\b([axbcdehlAXBCDEHL])\\b"
+        },
+        {
+          "name": "variable.other.register.16bit.rl78",
+          "match": "\\b(ax|bc|de|hl|AX|BC|DE|HL)\\b"
+        },
+        {
+          "name": "variable.other.register.sfr.rl78",
+          "match": "\\b(spl|sph|psw|cs|es|pmc|mem|SPL|SPH|PSW|CS|ES|PMC|MEM)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.integer.rl78",
+          "match": "\\b([1-9][0-9]*)\\b"
+        },
+        {
+          "name": "constant.language.integer.rl78",
+          "match": "\\b(0(b|B)[01]+)\\b"
+        },
+        {
+          "name": "constant.language.integer.rl78",
+          "match": "\\b(0(x|X)[0-9a-fA-F]+)\\b"
+        },
+        {
+          "name": "constant.language.integer.rl78",
+          "match": "\\b([0-7]+[oO]?)\\b"
+        },
+        {
+          "name": "constant.character.rl78",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.rl78",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.double.rl78",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.rl78",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.rl78",
+          "match": ";.*"
+        },
+        {
+          "name": "comment.line.rl78",
+          "match": "^\\s*#.*"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.rl78"
+}

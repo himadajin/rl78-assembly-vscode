@@ -1,0 +1,41 @@
+{
+  "name": "rl78-assembly",
+  "displayName": "RL78 assembly",
+  "description": "Syntax highlighting for the RL78 assembly language",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/himadajin/rl78-assembly-vscode"
+  },
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rl78",
+        "aliases": [
+          "RL78",
+          "rl78"
+        ],
+        "extensions": [
+          ".asm",
+          ".s",
+          ".S",
+          ".rl78"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rl78",
+        "scopeName": "source.rl78",
+        "path": "./syntaxes/rl78.tmLanguage.json"
+      }
+    ]
+  }
+}
