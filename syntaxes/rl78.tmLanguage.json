@@ -27,6 +27,11 @@
         {
           "match": "\\$(INCLUDE|BINCLUDE|MIRROR|NOWARNING|WARNING|IFDEF|IFNDEF|IF|IFN|ELSEIF|ELSEIFN|ELSE|ENDIF)\\b",
           "name": "keyword.control.rl78"
+        },
+        {
+          "comment": "compiler output pseudo instructions",
+          "name": "keyword.control.rl78",
+          "match": "\\s*\\.(LINE|STACK|_LINE_TOP|_LINE_END|VECTOR|ALIAS|TYPE)\\b"
         }
       ]
     },
