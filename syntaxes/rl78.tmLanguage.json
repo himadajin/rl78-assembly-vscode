@@ -33,6 +33,11 @@
           "match": "\\s*\\.(callt0|text|textf|textf_uint64kp|const|constf|data|dataf|sdata|bss|bssf|sbss|option_byte|security_id|flash_security|vect)\\b"
         },
         {
+          "comment": "section definition pseudo instructions",
+          "name": "keyword.control.rl78",
+          "match": "\\s*\\.(SECTION|CSEG|DSEG|BSEG|ORG|OFFSET)\\b"
+        },
+        {
           "comment": "compiler output pseudo instructions",
           "name": "keyword.control.rl78",
           "match": "\\s*\\.(LINE|STACK|_LINE_TOP|_LINE_END|VECTOR|ALIAS|TYPE)\\b"
