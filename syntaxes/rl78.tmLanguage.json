@@ -150,7 +150,7 @@
         },
         {
           "name": "variable.other.register.psw.rl78",
-          "match": "\\b(psw|ie|z|ac|isp0|isp1|cy|PSW|IE|Z|AC|ISP0|ISP1|CY)\\b"
+          "match": "\\b(psw|ie|z|rbs1|ac|rbs0|isp0|isp1|cy|PSW|IE|Z|RBS1|AC|RBS0|ISP0|ISP1|CY)\\b"
         },
         {
           "name": "variable.other.register.sp.rl78",
@@ -162,11 +162,11 @@
         },
         {
           "name": "variable.other.register.16bit.rl78",
-          "match": "\\b(ax|bc|de|hl|AX|BC|DE|HL)\\b"
+          "match": "\\b(ax|bc|de|hl|es|cs|AX|BC|DE|HL|ES|CS)\\b"
         },
         {
           "name": "variable.other.register.sfr.rl78",
-          "match": "\\b(spl|sph|psw|cs|es|pmc|mem|SPL|SPH|PSW|CS|ES|PMC|MEM)\\b"
+          "match": "\\b(spl|sph|pmc|mem|SPL|SPH|PMC|MEM)\\b"
         }
       ]
     },
