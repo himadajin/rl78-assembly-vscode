@@ -53,16 +53,25 @@
       "patterns": [
         {
           "comment": "label",
-          "match": "^\\s*(\\.?)([a-zA-Z_][a-zA-Z0-9_\\.\\$@]*)(\\:)",
+          "match": "^\\s*(\\.?[a-zA-Z_][a-zA-Z0-9_\\.\\$@]*)(\\:)",
           "captures": {
             "1": {
               "name": "constant.language.symbol.rl78"
             },
-            "2": {
-              "name": "constant.language.symbol.rl78"
-            },
             "3": {
               "name": "punctuation.separator.colon.rl78"
+            }
+          }
+        },
+        {
+          "comment": "label operand",
+          "match": "(\\#|\\!|\\!\\!|\\$|\\$\\!)(\\.?[a-zA-Z_][a-zA-Z0-9_\\.\\$@]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.operator.address.rl78"
+            },
+            "2": {
+              "name": "constant.language.symbol.rl78"
             }
           }
         }
