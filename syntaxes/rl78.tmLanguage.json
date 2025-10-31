@@ -51,7 +51,7 @@
         },
         {
           "name": "keyword.control.rl78",
-          "match": "^\\s*\\.(ORG|OFFSET)\\b"
+          "match": "^\\s*\\.(ORG|OFFSET|EQU|SET|DB|DB2|DB4|DB8|DS|DBIT|ALIGN)\\b"
         },
         {
           "match": "\\$(INCLUDE|BINCLUDE|MIRROR|NOWARNING|WARNING|IFDEF|IFNDEF|IF|IFN|ELSEIF|ELSEIFN|ELSE|ENDIF)\\b",
