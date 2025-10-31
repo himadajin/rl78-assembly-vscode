@@ -3,7 +3,7 @@
   "name": "RL78",
   "patterns": [
     {
-      "include": "#keywords"
+      "include": "#directives"
     },
     {
       "include": "#labels"
@@ -22,20 +22,40 @@
     }
   ],
   "repository": {
-    "keywords": {
+    "directives": {
       "patterns": [
+        {
+          "match": "^\\s*(\\.SECTION)\\s+(\\.?[a-zA-Z0-9_]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.rl78"
+            },
+            "2": {
+              "name": "entity.name.section.rl78"
+            },
+            "3": {
+              "name": "keyword.control.rl78"
+            }
+          }
+        },
+        {
+          "match": "^\\s*(\\.(CSEG|DSEG|BSEG))\\s+([a-zA-Z0-9_]+)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.rl78"
+            },
+            "3": {
+              "name": "keyword.control.rl78"
+            }
+          }
+        },
+        {
+          "name": "keyword.control.rl78",
+          "match": "^\\s*\\.(ORG|OFFSET)\\b"
+        },
         {
           "match": "\\$(INCLUDE|BINCLUDE|MIRROR|NOWARNING|WARNING|IFDEF|IFNDEF|IF|IFN|ELSEIF|ELSEIFN|ELSE|ENDIF)\\b",
           "name": "keyword.control.rl78"
-        },
-        {
-          "name": "entity.name.section.rl78",
-          "match": "\\s*\\.(callt0|text|textf|textf_uint64kp|const|constf|data|dataf|sdata|bss|bssf|sbss|option_byte|security_id|flash_security|vect)\\b"
-        },
-        {
-          "comment": "section definition pseudo instructions",
-          "name": "keyword.control.rl78",
-          "match": "\\s*\\.(SECTION|CSEG|DSEG|BSEG|ORG|OFFSET)\\b"
         },
         {
           "comment": "external definition and reference pseudo instructions",
