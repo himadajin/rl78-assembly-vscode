@@ -50,17 +50,23 @@
           }
         },
         {
+          "match": "^\\s*(\\.(PUBLIC|EXTERN|EXTBIT|WEAK))\\s+([a-zA-Z0-9_]+)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword.control.rl78"
+            },
+            "3": {
+              "name": "constant.language.symbol.rl78"
+            }
+          }
+        },
+        {
           "name": "keyword.control.rl78",
           "match": "^\\s*\\.(ORG|OFFSET|EQU|SET|DB|DB2|DB4|DB8|DS|DBIT|ALIGN)\\b"
         },
         {
           "match": "\\$(INCLUDE|BINCLUDE|MIRROR|NOWARNING|WARNING|IFDEF|IFNDEF|IF|IFN|ELSEIF|ELSEIFN|ELSE|ENDIF)\\b",
           "name": "keyword.control.rl78"
-        },
-        {
-          "comment": "external definition and reference pseudo instructions",
-          "name": "keyword.control.rl78",
-          "match": "\\s*\\.(PUBLIC|EXTERN|EXTBIT|WEAK)\\b"
         },
         {
           "comment": "compiler output pseudo instructions",
